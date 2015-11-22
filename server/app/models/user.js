@@ -1,4 +1,4 @@
-var models = require('./models'),
+var models = require('mongoose'),
 	Schema = models.Schema;
 
 var userSchema = new Schema({

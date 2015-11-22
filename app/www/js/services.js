@@ -1,4 +1,4 @@
-angular.module("FinalApp")
+angular.module("starter")
 .factory("PostResource", function($resource){
 	return $resource("http://jsonplaceholder.typicode.com/posts/:id",{id:"@id"},{update: {method: "PUT"}});
 })
@@ -7,28 +7,15 @@ angular.module("FinalApp")
   return $resource("http://192.168.1.21:3000/sensors/:id",{id:"@id"},{update: {method: "PUT"}});
 })*/
 
-.factory('socket', function ($rootScope) {
-  var socket = io.connect();
-  return {
-    on: function (eventName, callback) {
-      socket.on(eventName, function () {  
-        var args = arguments;
-        $rootScope.$apply(function () {
-          callback.apply(socket, args);
-        });
-      });
-    },
-    emit: function (eventName, data, callback) {
-      socket.emit(eventName, data, function () {
-        var args = arguments;
-        $rootScope.$apply(function () {
-          if (callback) {
-            callback.apply(socket, args);
-          }
-        });
-      })
-    }
-  };
+.factory('socket',function(socketFactory){
+    //Create socket and connect to http://chat.socket.io 
+    var myIoSocket = io.connect('http://chat.socket.io');
+
+    mySocket = socketFactory({
+        ioSocket: myIoSocket
+    });
+
+    return mySocket;
 })
 
 .factory('Sensors', ['$http',function($http) {
@@ -59,7 +46,7 @@ angular.module("FinalApp")
 			return $http.get('/api/todos');
 		},*/
 		create : function(todoData) {
-			return $http.post('/api/dataprueba', todoData);
+			return $http.post('/api/datoprueba', todoData);
 		}/*,
 		delete : function(id) {
 			return $http.delete('/api/todos/' + id);
