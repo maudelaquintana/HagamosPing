@@ -96,6 +96,12 @@ p {
 .box1{
     margin-left: -5%;
 }
+.green{
+    color: green !important;
+}
+.red{
+    color: red !important;
+}
 @media only screen and (max-device-width: 720px){
     .left{
         margin-left: 13% !important;
