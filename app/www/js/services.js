@@ -7,28 +7,15 @@ angular.module("starter")
   return $resource("http://192.168.1.21:3000/sensors/:id",{id:"@id"},{update: {method: "PUT"}});
 })*/
 
-.factory('socket', function ($rootScope) {
-  var socket = io.connect();
-  return {
-    on: function (eventName, callback) {
-      socket.on(eventName, function () {  
-        var args = arguments;
-        $rootScope.$apply(function () {
-          callback.apply(socket, args);
-        });
-      });
-    },
-    emit: function (eventName, data, callback) {
-      socket.emit(eventName, data, function () {
-        var args = arguments;
-        $rootScope.$apply(function () {
-          if (callback) {
-            callback.apply(socket, args);
-          }
-        });
-      })
-    }
-  };
+.factory('socket',function(socketFactory){
+    //Create socket and connect to http://chat.socket.io 
+    var myIoSocket = io.connect('http://chat.socket.io');
+
+    mySocket = socketFactory({
+        ioSocket: myIoSocket
+    });
+
+    return mySocket;
 })
 
 .factory('Sensors', ['$http',function($http) {

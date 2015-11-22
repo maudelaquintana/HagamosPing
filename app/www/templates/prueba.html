@@ -1,11 +1,30 @@
-<h2>Probando!!!!</h2>
-
-<form>
-	<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-	
-    <input type="text" ng-model="formData.text" placceholder="ingrese un dato">
-     
-	<!-- createToDo() WILL CREATE NEW TODOS -->
-
-	<button type="submit" ng-click="DatoPrueba()">Enviar</button>
-</form>
+<ion-view view-title="Prueba">
+    <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
+        
+        
+        <ion-content has-bouncing="true" class="content">
+          <div ng-show="connected">
+            <div class="log pad2">"Welcome to Socket.IO Chat – ";</div>
+            <div class="log"></div>
+          </div>
+          <div>
+            <ul>
+                <li ng-repeat="message in messages" >
+                    <span ng-show="{message.style}" ng-style="{color:message.color}" > : </span >
+                </li>
+            </ul>
+          </div>
+        </ion-content>
+        <div class="list light-grey bottommsg">
+            <div class="item item-input-inset light-grey">
+              <label  class="item-input-wrapper line-light-grey nopadtop">
+                <input class="line-light-grey" ng-change="updateTyping()" type="text"  placeholder="Message" ng-enter="sendMessage()" ng-model="chat.message"> 
+              </label>
+              <div class="divsend">
+                    <button class="button button-clear ion-android-send iconsend" ng-click="sendMessage()"></button>
+              </div>
+            </div>
+        </div>
+        
+    </ion-content>
+</ion-view>
