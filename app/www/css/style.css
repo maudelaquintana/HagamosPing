@@ -91,9 +91,11 @@ p {
     margin-right: 5%;
 }
 .box2{
+    border: solid 1px green !important;
     margin-left: 12%;
 }
 .box1{
+    border: solid 1px red !important;
     margin-left: -5%;
 }
 .green{

@@ -1,35 +1,41 @@
-<ion-view view-title="Prueba">
+<ion-view view-title="Live Chat">
     <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
-        
-        
+
         <ion-content has-bouncing="true" class="content">
+
           <div ng-show="connected">
-            <div class="log pad2">"Welcome to Socket.IO Chat – ";</div>
             <div class="log"></div>
           </div>
           <div>
             <ul>
+                <div class="item card-item">
                 <li ng-repeat="message in messages" >
-                    <!--span ng-show="{message.style}" ng-style="{color:message.color}" > : </span-->
-                    <span ng-show="{{message.style}}" ng-style="{color:message.color}">
-                      {{message.content}} 
-                    </span>
-                    
-
+                                <strong>Jon Snow</strong>
+                                <span ng-show="{{message.style}}" ng-style="{color:message.color}">
+                                 {{message.content}}
+                                </span>
+                                <div class="card-footer text-right">
+                                    <i class="icon ion-chatbubbles positive"></i> 6
+                                    <i class="icon ion-heart assertive"></i> 23
+                                    <div class="pull-left">
+                                        <i class="icon ion-clock"></i> just now
+                                    </div>
+                                </div>
                 </li>
+                </div>
             </ul>
           </div>
         </ion-content>
         <div class="list light-grey bottommsg">
             <div class="item item-input-inset light-grey">
               <label  class="item-input-wrapper line-light-grey nopadtop">
-                <input class="line-light-grey" ng-change="updateTyping()" type="text"  placeholder="Message" ng-enter="sendMessage()" ng-model="chat.message"> 
+                <input class="line-light-grey" ng-change="updateTyping()" type="text"  placeholder="Message" ng-enter="sendMessage()" ng-model="chat.message">
               </label>
               <div class="divsend">
                     <button class="button button-clear ion-android-send iconsend" ng-click="sendMessage()"></button>
               </div>
             </div>
         </div>
-        
+
     </ion-content>
 </ion-view>
