@@ -175,7 +175,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PruebaCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,DataPrueba) {
+.controller('PruebaCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, socket,DataPrueba) {
     /*$scope.$parent.showHeader();
     $scope.$parent.clearFabs();
     $scope.isExpanded = true;
@@ -222,7 +222,7 @@ angular.module('starter.controllers', [])
                     scope.loading = false;
                     $scope.formData = {}; // clear the form so our user is ready to enter another
                     //$scope.todos = data; // assign our new list of todos
-                //});
+                });
         }
     };
 

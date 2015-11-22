@@ -1,4 +1,4 @@
-angular.module("FinalApp")
+angular.module("starter")
 .factory("PostResource", function($resource){
 	return $resource("http://jsonplaceholder.typicode.com/posts/:id",{id:"@id"},{update: {method: "PUT"}});
 })
@@ -59,7 +59,7 @@ angular.module("FinalApp")
 			return $http.get('/api/todos');
 		},*/
 		create : function(todoData) {
-			return $http.post('/api/dataprueba', todoData);
+			return $http.post('/api/datoprueba', todoData);
 		}/*,
 		delete : function(id) {
 			return $http.delete('/api/todos/' + id);
