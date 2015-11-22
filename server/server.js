@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-var express = require('express'),
-    bodyParser      = require('body-parser'),
-    methodOverride  = require('method-override'),
-    sessions        = require('./routes/sessions'),
-    app = express(),
-    mongoose = require('mongoose');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(methodOverride()); // simulate DELETE and PUT
-
-/////////
-app.get('/', function(req, res) {
-   res.send("Hello world!");
-  });
-//Routers
-var sensorController = require('./app/routes/sensorapi');
-var userController = require('./app/routes/userapi');
-sensorController(app);
-userController(app);
-/////////
-
-// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-});
-=======
 // set up ======================================================================
 var express  = require('express.io');
 var app      = express(); 								// create our app w/ express
@@ -52,19 +20,12 @@ app.use(bodyParser.urlencoded({'extended':'true'})); // parse application/x-www-
 app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
->>>>>>> f349ed1daa88143340ce49802b0bd1694d66856d
-
 
 // routes ======================================================================
 var sensorController = require('./app/routes/sensorapi');
 sensorController(app);
 require('./app/routes/home.js')(app,arduino_server);
 
-<<<<<<< HEAD
-app.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
-});
-=======
 
 //Socket_Arduino
 arduino_server.on("listening", function() {
@@ -77,4 +38,3 @@ arduino_server.bind(6000); //listen to udp traffic on port 6000
 // listen (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
->>>>>>> f349ed1daa88143340ce49802b0bd1694d66856d
