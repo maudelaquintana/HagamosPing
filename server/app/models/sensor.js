@@ -1,10 +1,12 @@
-var mongoose = require('mongoose');
+var models = require('./models'),
+	Schema = models.Schema;
 
-module.exports = mongoose.model('Sensor', {
-	sw1: { type: String },
-	sw2: { type: String },
-	sw3: { type: String},
-	sw4: { type: String },
-	sw5: { type: String}
-
+var sensorSchema = new Schema({
+	sw1: 	{ type: String },
+	sw2: 	{ type: String },
+	sw3: 	{ type: String },
+	sw4:	{ type: String },
+	sw5:	{ type: String }
 });
+
+module.exports = models.model('Sensor', sensorSchema);

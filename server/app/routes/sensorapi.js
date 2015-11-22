@@ -33,11 +33,11 @@ module.exports = function(app) {
   	console.log(req.body);
 
   	var sensor = new Sensor({
-  		sw1:  req.body.sw1,
-      sw2:  req.body.sw2,
-      sw3: 	req.body.sw3,
-  		sw4:  req.body.sw4,
-      sw5:  req.body.sw4
+  		sw1: req.body.sw1,
+      sw2: req.body.sw2,
+      sw3: req.body.sw3,
+  		sw4: req.body.sw4,
+      sw5: req.body.sw5
   	});
 
   	sensor.save(function(err) {
@@ -54,11 +54,11 @@ module.exports = function(app) {
   //PUT - Update a register already exists
   updateSensor = function(req, res) {
   	Sensor.findById(req.params.id, function(err, sensor) {
-  		sensor.s1 = req.body.sw1;
-      sensor.s2 = req.body.sw2;
-      sensor.s3 = req.body.sw3;
-      sensor.s4 = req.body.sw4;
-      sensor.s5 = req.body.sw5;
+  		sensor.sw1 = req.body.sw1;
+      sensor.sw2 = req.body.sw2;
+      sensor.sw3 = req.body.sw3;
+      sensor.sw4 = req.body.sw4;
+      sensor.sw5 = req.body.sw5;
 
   		sensor.save(function(err) {
   			if(!err) {
