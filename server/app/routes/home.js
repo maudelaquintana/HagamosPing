@@ -1,4 +1,4 @@
-module.exports = function(app,arduino_server) {
+module.exports = function(app,arduino_server,sessions) {
 	// application -------------------------------------------------------------
 	
 	// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
@@ -11,16 +11,16 @@ module.exports = function(app,arduino_server) {
 	app.get('/sessions', sessions.findAll);
 	app.get('/sessions/:id', sessions.findById);
 
-	app.post('/api/dataprueba', function(req, res) {
-		var arduinoArray = req.body.text.toString().split(',');
+	app.post('/api/datoprueba', function(req, res) {
+		//var arduinoArray = req.body.text.toString().split(',');
 
 		//Actualiza Datos
-	    app.io.broadcast('data_arduino', {
+	    app.io.broadcast('datoPrueba', {
 			//val: req.body.val
-			dato1: arduinoArray[0],
-			dato2: arduinoArray[1],
+			dato1: req.body.text.toString()
+			/*dato2: arduinoArray[1],
 			dato3: arduinoArray[2],
-			dato4: arduinoArray[3]
+			dato4: arduinoArray[3]*/
 		});
 		// create a todo, information comes from AJAX request from Angular
 		/*Todo.create({
@@ -61,5 +61,12 @@ module.exports = function(app,arduino_server) {
 			dato4: arduinoArray[3]
 		});
 	});
+
+
+	//Mensaje Prueba
+    /*app.io.broadcast('datoPrueba', {
+		//val: req.body.val
+		mensaje: "hola"
+	});*/
 
 };
