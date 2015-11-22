@@ -175,4 +175,59 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('PruebaCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,DataPrueba) {
+    /*$scope.$parent.showHeader();
+    $scope.$parent.clearFabs();
+    $scope.isExpanded = true;
+    $scope.$parent.setExpanded(true);
+    $scope.$parent.setHeaderFab(false);*/
+
+    // Activate ink for controller
+    /*ionicMaterialInk.displayEffect();
+
+    ionicMaterialMotion.pushDown({
+        selector: '.push-down'
+    });
+    ionicMaterialMotion.fadeSlideInRight({
+        selector: '.animate-fade-slide-in .item'
+    });*/
+
+    $scope.formData = {};
+    $scope.loading = true;
+    
+    socket.on('datoPrueba', function (data) {
+        $scope.mensaje = data.mensaje;
+        
+        /*UmaEye.save({data: {stemp:1,sph:2,sconduc:3,sdureza:4}},function(data){
+            console.log(data);
+            
+        });*/
+        //$scope.uma = UmaEye.query();
+        console.log("El mensaje !!!! "+$scope.mensaje);
+       
+    });
+
+    $scope.DataPrueba = function() {
+
+        // validate the formData to make sure that something is there
+        // if form is empty, nothing will happen
+        if ($scope.formData.text != undefined) {
+            $scope.loading = true;
+
+            // call the create function from our service (returns a promise object)
+            DataPrueba.prueba($scope.formData)
+
+                // if successful creation, call our get function to get all the new todos
+                .success(function(data) {
+                    scope.loading = false;
+                    $scope.formData = {}; // clear the form so our user is ready to enter another
+                    //$scope.todos = data; // assign our new list of todos
+                //});
+        }
+    };
+
+    
+
+})
+
 ;
