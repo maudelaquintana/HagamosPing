@@ -10,7 +10,12 @@
           <div>
             <ul>
                 <li ng-repeat="message in messages" >
-                    <span ng-show="{message.style}" ng-style="{color:message.color}" > : </span >
+                    <!--span ng-show="{message.style}" ng-style="{color:message.color}" > : </span-->
+                    <span ng-show="{{message.style}}" ng-style="{color:message.color}">
+                      {{message.content}} 
+                    </span>
+                    
+
                 </li>
             </ul>
           </div>
