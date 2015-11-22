@@ -1,7 +1,7 @@
 /* global angular, document, window */
 'use strict';
 
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngOpenFB'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
     // Form data for the login modal
@@ -87,12 +87,24 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('LoginCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk) {
+.controller('LoginCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, $cordovaOauth, $location, ngFB) {
     $scope.$parent.clearFabs();
     $timeout(function() {
         $scope.$parent.hideHeader();
     }, 0);
     ionicMaterialInk.displayEffect();
+
+    $scope.login = function() {
+        ngFB.login({scope: 'email'}).then(
+            function (response) {
+                if (response.status === 'connected') {
+                    console.log('Facebook login succeeded');
+                    $scope.closeLogin();
+                } else {
+                    alert('Facebook login failed');
+                }
+            });
+    };
 })
 
 .controller('FriendsCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
@@ -223,11 +235,7 @@ angular.module('starter.controllers', [])
                     $scope.formData = {}; // clear the form so our user is ready to enter another
                     //$scope.todos = data; // assign our new list of todos
                 //});
+                });
         }
     };
-
-    
-
-})
-
-;
+});
