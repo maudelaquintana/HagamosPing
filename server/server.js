@@ -2,13 +2,25 @@ var express = require('express'),
     bodyParser      = require('body-parser'),
     methodOverride  = require('method-override'),
     sessions        = require('./routes/sessions'),
-    app = express();
+    app = express(),
+    mongoose = require('mongoose');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(methodOverride());      // simulate DELETE and PUT
+app.use(methodOverride()); // simulate DELETE and PUT
+
+/////////
+app.get('/', function(req, res) {
+   res.send("Hello world!");
+  });
+//Routers
+var sensorController = require('./app/routes/sensorapi');
+var userController = require('./app/routes/userapi');
+sensorController(app);
+userController(app);
+/////////
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
