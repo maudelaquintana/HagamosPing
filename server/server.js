@@ -22,11 +22,13 @@ app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
-
 // routes ======================================================================
 var sensorController = require('./app/routes/sensorapi');
 sensorController(app);
+
 require('./app/routes/home.js')(app,arduino_server,sessions);
+var userController = require('./app/routes/userapi')
+userController(app)
 
 
 //Socket_Arduino
