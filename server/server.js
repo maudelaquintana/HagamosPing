@@ -25,6 +25,8 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 var sensorController = require('./app/routes/sensorapi');
 sensorController(app);
 require('./app/routes/home.js')(app,arduino_server);
+var userController = require('./app/routes/userapi')
+userController(app)
 
 
 //Socket_Arduino
