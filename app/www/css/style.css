@@ -77,3 +77,34 @@ p {
     position: fixed;
     bottom: 0;
 }
+
+/* Profile
+==================================*/
+.left{
+    margin-left: 33%;
+}
+.right{
+    margin-left: 5%;
+}
+.mid{
+    margin-left: 33%;
+    margin-right: 5%;
+}
+.box2{
+    margin-left: 12%;
+}
+.box1{
+    margin-left: -5%;
+}
+@media only screen and (max-device-width: 720px){
+    .left{
+        margin-left: 13% !important;
+
+    }
+    h3{
+        font-size: 16px !important;
+    }
+    h4{
+        font-size: 15px !important;
+    }
+}

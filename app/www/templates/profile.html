@@ -1,10 +1,19 @@
 <ion-view view-title="Profile">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="hero slide-up" style="background-image: url('img/profile-bg.jpg');">
+        <div class="hero slide-up" style="background-image: url('img/trees.jpg');">
             <div class="content">
-                <div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>
-                <h3><a class="light">Daenerys Targaryen</a></h3>
-                <h4>dragon_mommy</h4>
+                <div class="avatar box1" style="background-image: url('img/tyrion.jpg');"></div>
+                <div class="avatar box2" style="background-image: url('img/daenerys.jpg');"></div>
+                <div style="display: -webkit-box; width: 100%">
+                    <div class="left">
+                        <h3><a class="light">Tyron Lanister</a></h3>
+                        <h4>knight</h4>
+                    </div>
+                    <div class="right">
+                        <h3><a class="light">Daenerys Targaryen</a></h3>
+                        <h4>dragon_mommy</h4>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="tabs tabs-dark tabs-icon-top static">
@@ -12,10 +21,10 @@
                 <i class="icon ion-arrow-graph-up-right"></i> Activity
             </a>
             <a ui-sref="app.friends" class="tab-item">
-                <i class="icon ion-android-people"></i> Friends
+                <i class="icon ion-briefcase"></i> Travel
             </a>
             <a ui-sref="app.gallery" class="tab-item">
-                <i class="icon ion-images"></i> Photos
+                <i class="icon ion-images"></i> Gallery
             </a>
         </div>
         <h4 class="content padding double-padding-x">Following</h4>
